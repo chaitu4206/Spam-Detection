@@ -2,6 +2,10 @@
 
 A transformer-based text classification project that identifies SMS messages as **HAM (legitimate)** or **SPAM (unwanted or potentially fraudulent)** using a fine-tuned BERT model. The project includes automated dataset downloading, text preprocessing, class-weighted training, evaluation, and interactive prediction.
 
+**Author:** Chaitanya
+**GitHub:** [@chaitu4206](https://github.com/chaitu4206)
+**Repository:** [Spam-Detection](https://github.com/chaitu4206/Spam-Detection)
+
 ## Overview
 
 SMS spam can contain unwanted advertisements, suspicious links, and fraudulent messages. This project fine-tunes the pretrained `bert-base-uncased` model to classify SMS messages into two categories.
@@ -20,7 +24,7 @@ SMS spam can contain unwanted advertisements, suspicious links, and fraudulent m
 
 ## Model Performance
 
-The repository's saved classification report records the following results on a test set of 500 messages.
+The saved classification report records the following results on a test set of 500 messages.
 
 | Metric | HAM | SPAM |
 |---|---:|---:|
@@ -35,7 +39,7 @@ The repository's saved classification report records the following results on a 
 | Macro F1-score | 97.80% |
 | Weighted F1-score | 98.99% |
 
-The model correctly classified 495 of the 500 test messages according to the saved report's accuracy.
+The model correctly classified 495 of the 500 test messages according to the saved report.
 
 **Interpretation:** The model achieved high precision and recall for legitimate messages and detected approximately 94% of spam messages in this test set. Performance on new messages may differ, particularly when message patterns differ from the training dataset.
 
@@ -94,8 +98,8 @@ The `data/` directory is created locally when the dataset is downloaded. Generat
 
 This project uses the **SMS Spam Collection** dataset from the UCI Machine Learning Repository.
 
-- Dataset page: https://archive.ics.uci.edu/dataset/228/sms+spam+collection
-- Download URL used by the project: https://archive.ics.uci.edu/static/public/228/sms+spam+collection.zip
+- Dataset page: [UCI SMS Spam Collection](https://archive.ics.uci.edu/dataset/228/sms+spam+collection)
+- Download URL: [SMS Spam Collection ZIP](https://archive.ics.uci.edu/static/public/228/sms+spam+collection.zip)
 
 The dataset contains SMS messages labeled as legitimate (`ham`) or spam.
 
@@ -113,13 +117,11 @@ The `dataset.py` script downloads and extracts the dataset into `data/spam/` whe
 The training pipeline:
 
 1. Loads the tab-separated SMS dataset.
-2. Removes missing records and maps the labels to numeric values.
+2. Removes missing records and maps labels to numeric values.
 3. Selects up to 5,000 records using stratified sampling with random state 42.
 4. Splits the selected records into training, validation, and test sets using stratification.
 
-The intended split is 80% training, 10% validation, and 10% testing.
-
-With 5,000 records, this produces approximately 4,000 training records, 500 validation records, and 500 test records.
+The intended split is 80% training, 10% validation, and 10% testing. With 5,000 records, this produces approximately 4,000 training records, 500 validation records, and 500 test records.
 
 ## Text Preprocessing
 
@@ -148,7 +150,7 @@ The cleaned text is tokenized using the pretrained BERT tokenizer. Sequences are
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/v78135236-dev/Spam-Detection.git
+git clone https://github.com/chaitu4206/Spam-Detection.git
 cd Spam-Detection
 ```
 
@@ -221,11 +223,7 @@ python train.py
 
 The training code calculates class weights from the training-label distribution and uses them in the cross-entropy loss. The best checkpoint is selected using validation macro F1-score.
 
-The final model and tokenizer are saved to:
-
-```text
-models/spam_bert/
-```
+The final model and tokenizer are saved to `models/spam_bert/`.
 
 Training requires additional computation and may take longer on a CPU.
 
@@ -238,8 +236,6 @@ python evaluate.py
 ```
 
 The script recreates the stratified dataset split, preprocesses the test set, loads the saved model, and generates predictions.
-
-Evaluation artifacts:
 
 | File | Description |
 |---|---|
@@ -261,7 +257,7 @@ python inference.py
 
 Enter a message when prompted. Type `exit` to stop.
 
-Example session (illustrative format; the output below is not a recorded prediction):
+Example session (illustrative format; these are not recorded predictions):
 
 ```text
 ============================================================
@@ -323,9 +319,10 @@ Confidence is the model's softmax probability, not a guarantee that the predicti
 
 ## Author and Repository
 
-**GitHub repository:** https://github.com/v78135236-dev/Spam-Detection
+Created and maintained by **Chaitanya**.
 
-Contributions and suggestions for improving SMS spam classification are welcome.
+- **GitHub profile:** [chaitu4206](https://github.com/chaitu4206)
+- **Project repository:** [chaitu4206/Spam-Detection](https://github.com/chaitu4206/Spam-Detection)
 
 ## License
 
